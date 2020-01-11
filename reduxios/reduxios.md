@@ -31,7 +31,7 @@ export const booksReducer = booksStoreFetcher.createReducer([]);
 ```ts
 import axios from "axios";
 
-export const useGetBooks = () => {
+export const useFetchBooks = () => {
   return booksStoreFetcher.useResource({
     axiosInstance: axios, // This can also be an axios instance created
     method: "get",
@@ -44,13 +44,13 @@ export const useGetBooks = () => {
 
 ```tsx
 const BooksList: FC = () => {
-  const getBooks = useGetBooks();
+  const fetchBooks = useFetchBooks();
   const { data, fetchState, axiosErrorResponse } = useSelector(
     (state: RootState) => state.books
   );
 
   useEffect(() => {
-    getBooks();
+    fetchBooks();
   }, []);
 
   return (
